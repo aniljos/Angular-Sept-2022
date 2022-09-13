@@ -1,0 +1,34 @@
+<div>
+    <h4>Data Binding</h4>
+
+    <h5>
+        The name is {{name}}. Something else
+    </h5>
+
+    <h5>
+        Count: <input type="number" 
+        [placeholder]="ctrPlaceHolder"
+        [value]="count"/>
+
+        <span>{{count}}</span>
+    </h5>
+    <div>
+        <button (click)="inc($event)">Inc</button>
+    </div>
+
+    <br/>
+    <div>
+        Message: <input [(ngModel)]="message"/>
+        
+        <span>{{message}}</span>
+    </div>
+
+    <br/>
+    <div>
+
+        Count: <input type="number" 
+                            [value]="count" (input)="count = $any($event).target.value"/>
+    </div>
+
+
+</div>
