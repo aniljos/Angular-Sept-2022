@@ -1,5 +1,13 @@
 <h4>List Products</h4>
 
+<div>
+    <input type="search" placeholder="Search" [(ngModel)]="searchKey"/>
+</div>
+
+<p>
+    Search results for {{searchKey}}
+</p>
+
 <table>
     <thead>
         <tr class="header">
@@ -12,13 +20,13 @@
     </thead>
     <tbody>
 
-        <tr *ngFor="let item of products; index as i; even as e; odd as o" 
+        <tr *ngFor="let item of products | productsFilter : searchKey; index as i; even as e; odd as o" 
                                                 [ngClass]="{oddCls: o, evenCls: e}">
             <td>{{i}}</td>
             <td>{{item.id}}</td>
-            <td>{{item.name}}</td>
+            <td>{{item.name | uppercase}}</td>
             <td>{{item.description}}</td>
-            <td>{{item.price}}</td>
+            <td>{{item.price | currency : 'INR'}}</td>
         </tr>
 
     </tbody>
