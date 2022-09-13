@@ -1,0 +1,25 @@
+<h4>List Products</h4>
+
+<table>
+    <thead>
+        <tr class="header">
+            <th>Index</th>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let item of products; index as i; even as e; odd as o" 
+                                                [ngClass]="{oddCls: o, evenCls: e}">
+            <td>{{i}}</td>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.price}}</td>
+        </tr>
+
+    </tbody>
+</table>
