@@ -16,6 +16,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -27,7 +28,32 @@
             <td>{{item.name | uppercase}}</td>
             <td>{{item.description}}</td>
             <td>{{item.price | currency : 'INR'}}</td>
+            <td>
+                <button (click)="deleteProduct(item)">Delete</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="number" placeholder="ID" [(ngModel)]="nProduct.id"/>
+            </td>
+            <td>
+                <input placeholder="Name" style="width: 250px;" [(ngModel)]="nProduct.name"/>
+            </td>
+            <td>
+                <input placeholder="Desc" style="width: 400px;" [(ngModel)]="nProduct.description"/>
+            </td>
+            <td>
+                <input type="number" placeholder="Price" [(ngModel)]="nProduct.price"/>
+            </td>
+            <td>
+                <button (click)="saveProduct()">Save</button>
+            </td>
         </tr>
 
     </tbody>
 </table>
+<!-- <pre>
+    {{nProduct | json}}
+</pre> -->
