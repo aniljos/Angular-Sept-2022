@@ -1,0 +1,17 @@
+<h4>Login</h4>
+
+<div [formGroup]="loginFormGroup">
+  <div>
+    <p>UserName</p>
+    <input placeholder="UserName" formControlName="id"/>
+  </div>
+
+  <div>
+    <p>Password</p>
+    <input placeholder="*****" type="password" formControlName="pwd" />
+  </div>
+
+  <div>
+    <button (click)="login()">Login</button>
+  </div>
+</div>

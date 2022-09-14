@@ -1,25 +1,43 @@
+<h4>Edit Product : Id {{ product!.id }}</h4>
 
-<h4>Edit Product : Id {{product!.id}}</h4>
-
-<fieldset>
+<!-- FormGroup -->
+<form #myForm="ngForm">
+    {{myForm}}
+  <fieldset>
     <div>
-        <label>Name</label>
-        <input [(ngModel)]="temp!.name"/>
+      <label>Name</label>
+
+      <!-- FormControl(only if ngModel) -->
+      <input  [(ngModel)]="temp!.name" name="name" required minlength="4" #name="ngModel"/>
+      <span [hidden]="name.valid">
+        The field is required with a minimum lenght of 4
+      </span>
     </div>
 
     <div>
-        <label>Description</label>
-        <input [(ngModel)]="temp!.description"/>
+      <label>Description</label>
+      <!-- FormControl -->
+      <input [(ngModel)]="temp!.description" name="desc" required #desc="ngModel"/>
+      <span *ngIf="desc.invalid">
+        The field is required
+      </span>
     </div>
 
     <div>
-        <label>Price</label>
-        <input type="number" [(ngModel)]="temp!.price"/>
+      <label>Price</label>
+      <!-- FormControl -->
+      <input type="number" [(ngModel)]="temp!.price" name="price" required min="100" #price="ngModel"/>
+      <span *ngIf="price.hasError('required')">
+        The field is required
+      </span>
+      <span *ngIf="price.hasError('min')">
+        The minimum value should be 100
+      </span>
     </div>
 
     <div>
-        <button (click)="save()">Save</button> &nbsp;
-        <button (click)="cancel()">Cancel</button>
+      <button (click)="save()" [disabled]="myForm.invalid || myForm.pristine">Save</button> &nbsp;
+      <button (click)="cancel()">Cancel</button>
     </div>
-
-</fieldset>
+  </fieldset>
+</form>
