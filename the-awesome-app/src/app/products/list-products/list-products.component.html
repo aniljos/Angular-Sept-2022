@@ -59,4 +59,5 @@
     {{nProduct | json}}
 </pre> -->
 
-<app-edit-product *ngIf="selectedProduct !== null" [product]="selectedProduct"></app-edit-product>
+<app-edit-product *ngIf="selectedProduct !== null" [product]="selectedProduct"
+                        (saved)="editUpdate($event)" (cancelled)="editCancelled($event)"></app-edit-product>

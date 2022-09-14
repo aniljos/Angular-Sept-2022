@@ -85,6 +85,32 @@ export class ListProductsComponent implements OnInit {
     this.selectedProduct = product;
   }
 
+  editUpdate(updatedProduct: Product){
+    console.log("[editUpdate]", updatedProduct);
+
+    this.httpClient
+            .put(this.url + "/" + updatedProduct.id, updatedProduct)
+            .subscribe(() => {
+
+              const index = this.products.findIndex(item => item.id === updatedProduct.id);
+              this.products[index] = updatedProduct;
+              this.selectedProduct = null;
+
+            }, () => {
+
+              alert("Failed to update")
+            })
+
+  }
+
+  editCancelled(message: string){
+    console.log("[editCancelled]", message);
+
+    this.selectedProduct = null;
+    alert(message);
+
+  }
+
 }
 
 
