@@ -1,0 +1,25 @@
+
+<h4>Edit Product : Id {{product!.id}}</h4>
+
+<fieldset>
+    <div>
+        <label>Name</label>
+        <input [(ngModel)]="product!.name"/>
+    </div>
+
+    <div>
+        <label>Description</label>
+        <input [(ngModel)]="product!.description"/>
+    </div>
+
+    <div>
+        <label>Price</label>
+        <input type="number" [(ngModel)]="product!.price"/>
+    </div>
+
+    <div>
+        <button>Save</button> &nbsp;
+        <button>Cancel</button>
+    </div>
+
+</fieldset>

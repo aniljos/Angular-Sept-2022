@@ -17,9 +17,12 @@ export class ListProductsComponent implements OnInit {
   public nProduct: Product = new Product(0, "", 0, "");
   private url: string;
 
+  public selectedProduct: Product | null = null;
+
+
   constructor(private httpClient: HttpClient) { 
 
-      this.url = "https://aj-mock-rest-api.herokuapp.com/products"
+      this.url = "http://localhost:9000/products"
       //"http://localhost:9000/products";
       //async
       const result = this.httpClient.get<Array<Product>>(this.url);
@@ -75,6 +78,11 @@ export class ListProductsComponent implements OnInit {
             alert("Failed to delete")
           })
 
+  }
+
+  editProduct(product: Product){
+
+    this.selectedProduct = product;
   }
 
 }
