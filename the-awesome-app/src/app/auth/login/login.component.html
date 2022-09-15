@@ -1,17 +1,23 @@
 <h4>Login</h4>
 
+
+<div *ngIf="errorMessage" class="alert alert-danger">
+  {{errorMessage}}
+</div>
+
 <div [formGroup]="loginFormGroup">
-  <div>
+
+  <div class="form-group">
     <p>UserName</p>
-    <input placeholder="UserName" formControlName="id"/>
+    <input class="form-control" placeholder="UserName" formControlName="id"/>
   </div>
 
-  <div>
+  <div class="form-group">
     <p>Password</p>
-    <input placeholder="*****" type="password" formControlName="pwd" />
+    <input class="form-control" placeholder="*****" type="password" formControlName="pwd" />
   </div>
 
   <div>
-    <button (click)="login()">Login</button>
+    <button class="btn btn-primary" (click)="login()">Login</button>
   </div>
 </div>
