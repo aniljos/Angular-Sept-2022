@@ -2,23 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {UserService} from '../services/user-service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  
 })
 export class LoginComponent implements OnInit {
 
   public loginFormGroup: FormGroup;
   public errorMessage: string = "";
 
-  constructor(private httpClient: HttpClient, private router: Router) { 
+  constructor(private httpClient: HttpClient, private router: Router, private userService: UserService) { 
 
       this.loginFormGroup = new FormGroup({
         id: new FormControl("", [Validators.required, Validators.minLength(3)], []),
         pwd: new FormControl("", [Validators.required], [])
       });
+
+      userService.isAuthenticated();
   }
 
   ngOnInit(): void {

@@ -12,6 +12,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchComponent } from './search/search.component';
 import {HttpClientModule} from '@angular/common/http';
+import { GadgetsModule } from './gadgets/gadgets.module';
 
 const routes: Routes = [
  
@@ -35,7 +36,8 @@ const routes: Routes = [
     AuthModule, 
     RouterModule.forRoot(routes), 
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GadgetsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

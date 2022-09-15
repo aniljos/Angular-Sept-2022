@@ -7,6 +7,7 @@ import {Product} from '../model/product';
 export class ProductsFilterPipe implements PipeTransform {
 
 
+
   //*ngFor="let item of products | productsFilter : searchKey
 
   transform(input: Array<Product>, searchKey: string): Array<Product> {
