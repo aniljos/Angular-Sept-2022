@@ -6,6 +6,7 @@ export class UserServiceImpl extends UserService{
 
 
     private isAuth: boolean = false;
+    private accessToken: string = "";
 
     isAuthenticated(): boolean {
 
@@ -15,6 +16,14 @@ export class UserServiceImpl extends UserService{
     }
     setAuthenticated(value: boolean): void {
         this.isAuth = value;
+    }
+
+    override setAccessToken(token:string): void{
+        this.accessToken = token;
+    }
+
+    override getAccessToken(): string{
+        return this.accessToken;
     }
 
 }

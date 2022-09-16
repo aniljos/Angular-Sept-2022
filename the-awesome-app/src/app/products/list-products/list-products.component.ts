@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Product} from '../../model/product';
+import { environment } from 'src/environments/environment';
 
 
 //new ListProductsComponent(new HttpClient());
@@ -22,7 +23,7 @@ export class ListProductsComponent implements OnInit {
 
   constructor(private httpClient: HttpClient) { 
 
-      this.url = "http://localhost:9000/products"
+      this.url = environment.baseUrl;
       //"http://localhost:9000/products";
       //async
       const result = this.httpClient.get<Array<Product>>(this.url);

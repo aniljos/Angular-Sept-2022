@@ -11,10 +11,12 @@ import { AuthModule } from './auth/auth.module';
 import {RouterModule, Routes} from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchComponent } from './search/search.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 //import { GadgetsModule } from './gadgets/gadgets.module';
 import { UserService } from './auth/services/user-service';
 import { UserServiceImpl } from './auth/services/user-service-impl';
+import { InterceptorService } from './auth/services/interceptor.service';
+
 
 const routes: Routes = [
  
@@ -42,7 +44,8 @@ const routes: Routes = [
     //GadgetsModule
   ],
   providers: [
-    {provide: UserService, useClass: UserServiceImpl}
+    {provide: UserService, useClass: UserServiceImpl},
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
   

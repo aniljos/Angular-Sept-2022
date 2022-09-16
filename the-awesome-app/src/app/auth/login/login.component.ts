@@ -42,19 +42,23 @@ export class LoginComponent implements OnInit {
         const url = "http://localhost:9000/login";
 
         this.httpClient
-            .post(url, {name: idCtrl?.value, password: pwdCtrl?.value})
-            .subscribe(() => {
+            .post<{accessToken: string, refreshToken:string}>(url, {name: idCtrl?.value, password: pwdCtrl?.value})
+            .subscribe((data) => {
                 
                 this.errorMessage="";
                 this.userService.setAuthenticated(true);
+                this.userService.setAccessToken(data.accessToken);
                 this.router.navigateByUrl("/products");
             }, () => {
                 
-              this.userService.setAuthenticated(false);
+                this.userService.setAccessToken("");
+                this.userService.setAuthenticated(false);
                 this.errorMessage="Invalid Credentials";
             })
      }
      else{
+
+      this.userService.setAccessToken("");
       this.userService.setAuthenticated(false);
       this.errorMessage="Please provide all the inputs";
      }
