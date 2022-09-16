@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { UserService } from './user-service';
 
 
+
 @Injectable()
 export class InterceptorService implements HttpInterceptor {
 
@@ -13,6 +14,12 @@ export class InterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     console.log("[InterceptorService] intercept");
+    if(req.url.startsWith("https://en.wikipedia.org/w/api.php")){
+      return next.handle(req);
+    }
+
+
+    
     const accessToken = this.userService.getAccessToken();
 
     if(accessToken){

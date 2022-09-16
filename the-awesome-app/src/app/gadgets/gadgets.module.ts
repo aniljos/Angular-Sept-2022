@@ -26,7 +26,7 @@ const routes: Routes = [
     ViewCartComponent
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes), HttpClientModule
+    CommonModule, RouterModule.forChild(routes), //HttpClientModule
   ],
   providers:[
     {provide: GadgetService, useClass: GadgetService}

@@ -1,14 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 import { SearchComponent } from './search.component';
 
-describe('SearchComponent', () => {
+fdescribe('SearchComponent', () => {
   let component: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
 
   beforeEach(async () => {
+
     await TestBed.configureTestingModule({
-      declarations: [ SearchComponent ]
+      declarations: [ SearchComponent ],
+      imports: [HttpClientTestingModule],
+      providers: [],
+      
     })
     .compileComponents();
 
