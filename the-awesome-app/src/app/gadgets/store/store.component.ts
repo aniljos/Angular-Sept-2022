@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CartItem } from 'src/app/model/cart-item';
+import { Product } from 'src/app/model/product';
+import { GadgetService } from '../gadget.service';
 
 @Component({
   selector: 'app-store',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreComponent implements OnInit {
 
-  constructor() { }
+  public products: Array<Product> = [];
+
+  constructor(private gadgetService: GadgetService) { 
+
+      gadgetService
+            .fetchProducts()
+            .subscribe((data) => {
+              this.products = data;
+            })
+
+  }
 
   ngOnInit(): void {
+  }
+
+  add(product: Product, quantity: string){
+
+    this.gadgetService.addToCart(new CartItem(product, Number(quantity)));
   }
 
 }
