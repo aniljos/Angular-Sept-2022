@@ -6,13 +6,14 @@ import { ViewCartComponent } from './view-cart/view-cart.component';
 import {RouterModule, Routes} from '@angular/router';
 import { GadgetService } from './gadget.service';
 import {HttpClientModule} from '@angular/common/http';
+import { AuthGuardService } from '../auth/services/auth-guard.service';
 
 const routes: Routes = [
-  {path: "gadgets", component: MainComponent, children: [
+  {path: "", component: MainComponent, children: [
     
     {path: "store", component: StoreComponent},
     {path: "cart", component: ViewCartComponent}
-  ]},
+  ], canActivate: [AuthGuardService]},
   
   
   

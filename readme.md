@@ -88,7 +88,7 @@
 1. Navigation between routes
 2. Manages the history
 3. Child Routes
-4. Lazy-loading of modules
+4. Lazy-loading of modules(Multiple bundles)
 5. Router Guards: Implemented as service
 6. Navigation events
 

@@ -46,13 +46,16 @@ export class LoginComponent implements OnInit {
             .subscribe(() => {
                 
                 this.errorMessage="";
+                this.userService.setAuthenticated(true);
                 this.router.navigateByUrl("/products");
             }, () => {
                 
+              this.userService.setAuthenticated(false);
                 this.errorMessage="Invalid Credentials";
             })
      }
      else{
+      this.userService.setAuthenticated(false);
       this.errorMessage="Please provide all the inputs";
      }
       

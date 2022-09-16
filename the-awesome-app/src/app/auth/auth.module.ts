@@ -23,7 +23,7 @@ const routes: Routes =[
     LoginComponent
   ],
   providers:[
-    {provide: UserService, useClass: UserServiceImpl}
+   // {provide: UserService, useClass: UserServiceImpl}
   ]
 })
 export class AuthModule { }

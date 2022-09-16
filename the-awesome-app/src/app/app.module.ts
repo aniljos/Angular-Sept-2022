@@ -12,14 +12,16 @@ import {RouterModule, Routes} from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchComponent } from './search/search.component';
 import {HttpClientModule} from '@angular/common/http';
-import { GadgetsModule } from './gadgets/gadgets.module';
+//import { GadgetsModule } from './gadgets/gadgets.module';
+import { UserService } from './auth/services/user-service';
+import { UserServiceImpl } from './auth/services/user-service-impl';
 
 const routes: Routes = [
  
   {path: "home", component: HelloComponent},
   {path: "binding", component: DataBindingComponent},
   {path: "search", component: SearchComponent},
-
+  {path: "gadgets", loadChildren: () => import('./gadgets/gadgets.module').then(m => m.GadgetsModule ) },
   {path: "", redirectTo: "/home", pathMatch: "full"},
   {path: "**", component: NotFoundComponent},
   
@@ -37,9 +39,12 @@ const routes: Routes = [
     RouterModule.forRoot(routes), 
     ReactiveFormsModule,
     HttpClientModule,
-    GadgetsModule
+    //GadgetsModule
   ],
-  providers: [],
+  providers: [
+    {provide: UserService, useClass: UserServiceImpl}
+  ],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
